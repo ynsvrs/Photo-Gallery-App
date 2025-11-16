@@ -1,6 +1,7 @@
-package decorator.decorators;
+package decorator.concretedecorator;
 
-import decorator.interfaces.IPhoto;
+import decorator.component.IPhoto;
+import decorator.decorator.PhotoDecorator;
 
 public class SepiaFilter extends PhotoDecorator {
     public SepiaFilter(IPhoto decoratedPhoto) {

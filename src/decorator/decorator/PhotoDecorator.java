@@ -1,6 +1,6 @@
-package decorator.decorators;
+package decorator.decorator;
 
-import decorator.interfaces.IPhoto;
+import decorator.component.IPhoto;
 
 public abstract class PhotoDecorator implements IPhoto {
     protected IPhoto decoratedPhoto;

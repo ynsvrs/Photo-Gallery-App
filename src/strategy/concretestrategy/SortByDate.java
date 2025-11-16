@@ -1,6 +1,7 @@
-package strategy.strategy;
+package strategy.concretestrategy;
 
 import strategy.model.Photo;
+import strategy.strategy.IPhotoSortStrategy;
 
 public class SortByDate implements IPhotoSortStrategy {
     @Override

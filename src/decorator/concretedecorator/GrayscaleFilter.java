@@ -1,6 +1,7 @@
-package decorator.decorators;
+package decorator.concretedecorator;
 
-import decorator.interfaces.IPhoto;
+import decorator.component.IPhoto;
+import decorator.decorator.PhotoDecorator;
 
 public class GrayscaleFilter extends PhotoDecorator {
     public GrayscaleFilter(IPhoto decoratedPhoto) {

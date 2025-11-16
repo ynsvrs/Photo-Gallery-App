@@ -2,7 +2,7 @@ package adapter.adapter;
 
 import adapter.target.IPhotoTarget;
 import adapter.adaptee.LegacyPhoto;
-import decorator.interfaces.IPhoto;
+import decorator.component.IPhoto;
 
 public class LegacyPhotoAdapter implements IPhotoTarget, IPhoto {
     private LegacyPhoto legacy;

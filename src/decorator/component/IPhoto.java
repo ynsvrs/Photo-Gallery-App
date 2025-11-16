@@ -1,4 +1,4 @@
-package decorator.interfaces;
+package decorator.component;
 
 public interface IPhoto {
     String getDescription();

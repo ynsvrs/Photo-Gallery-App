@@ -1,6 +1,6 @@
-package decorator.components;
+package decorator.concretecomponent;
 
-import decorator.interfaces.IPhoto;
+import decorator.component.IPhoto;
 
 public class PlainPhoto implements IPhoto {
     private String name;

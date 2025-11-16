@@ -1,10 +1,12 @@
-import decorator.interfaces.IPhoto;
-import decorator.components.PlainPhoto;
-import decorator.decorators.*;
+import decorator.component.IPhoto;
+import decorator.concretecomponent.PlainPhoto;
+import decorator.concretedecorator.GrayscaleFilter;
+import decorator.concretedecorator.SepiaFilter;
 import observer.observerpattern.ViewerUser;
+import strategy.concretestrategy.SortByDate;
+import strategy.concretestrategy.SortByRating;
 import strategy.context.Gallery;
 import strategy.model.Photo;
-import strategy.strategy.*;
 import observer.subject.*;
 import facade.facadepattern.GalleryFacade;
 import factory.creator.PhotoFactory;
