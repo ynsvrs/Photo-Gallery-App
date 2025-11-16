@@ -38,7 +38,7 @@ public class PhotoGalleryApp {
 
         // Strategy
         System.out.println("\n--- STRATEGY ---");
-        Photo p1 = new Photo("Beach", "2025-01-15", 4.5);
+        Photo p1 = new Photo("Beach Summer", "2025-01-15", 4.5);
         Photo p2 = new Photo("Mountain", "2024-12-20", 4.8);
         Gallery gallery = new Gallery(new SortByDate());
         System.out.println(gallery.sortPhotos(p1, p2));
@@ -84,7 +84,7 @@ public class PhotoGalleryApp {
         facade.addPhoto(fullyFiltered.getName());
 
         // Strategy
-        Photo sp1 = new Photo("Beach", "2025-01-15", 4.5);
+        Photo sp1 = new Photo("Beach Summer", "2025-01-15", 4.5);
         Photo sp2 = new Photo(fullyFiltered.getName(), fullyFiltered.getDate(), fullyFiltered.getRating());
         Gallery sortGallery = new Gallery(new SortByRating());
         System.out.println(sortGallery.sortPhotos(sp1, sp2));
