@@ -1,7 +1,6 @@
-package observer.implementation;
+package observer.subject;
 
-import observer.interfaces.IPhotoGallery;
-import observer.interfaces.IViewer;
+import observer.observerpattern.IViewer;
 import observer.models.Photo;
 import java.util.ArrayList;
 import java.util.List;

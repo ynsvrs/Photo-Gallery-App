@@ -1,11 +1,12 @@
 import decorator.interfaces.IPhoto;
 import decorator.components.PlainPhoto;
 import decorator.decorators.*;
+import observer.observerpattern.ViewerUser;
 import strategy.context.Gallery;
 import strategy.model.Photo;
 import strategy.strategy.*;
-import observer.implementation.*;
-import facade.facade.GalleryFacade;
+import observer.subject.*;
+import facade.facadepattern.GalleryFacade;
 import factory.creator.PhotoFactory;
 import factory.concretecreator.*;
 import factory.product.IPhotoType;

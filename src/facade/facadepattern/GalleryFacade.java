@@ -1,9 +1,8 @@
-package facade.facade;
+package facade.facadepattern;
 
-import facade.components.PhotoManager;
-import facade.components.FilterSystem;
-import facade.components.SortSystem;
-import java.util.List;
+import facade.subsystems.PhotoManager;
+import facade.subsystems.FilterSystem;
+import facade.subsystems.SortSystem;
 
 public class GalleryFacade {
     private PhotoManager photoManager = new PhotoManager();

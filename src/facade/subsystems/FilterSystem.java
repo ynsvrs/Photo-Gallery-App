@@ -1,13 +1,10 @@
-package facade.components;
+package facade.subsystems;
 
 import facade.interfaces.ISystem;
-import java.util.ArrayList;
-import java.util.List;
 
-public class PhotoManager implements ISystem {
-    private String name = "Photo Manager";
+public class FilterSystem implements ISystem {
+    private String name = "Filter System";
     private String status = "Inactive";
-    private List<String> photos = new ArrayList<>();
 
     @Override public String getName() { return name; }
     @Override public String getStatus() { return status; }
@@ -22,10 +19,7 @@ public class PhotoManager implements ISystem {
         System.out.println(name + " is now INACTIVE.");
     }
 
-    public void addPhoto(String photoName) {
-        photos.add(photoName);
-        System.out.println(photoName + " added.");
+    public void applyFilter(String filterName) {
+        System.out.println("Applying " + filterName + " filter...");
     }
-
-    public List<String> getPhotos() { return photos; }
 }

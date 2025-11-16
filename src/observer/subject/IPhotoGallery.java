@@ -1,4 +1,6 @@
-package observer.interfaces;
+package observer.subject;
+
+import observer.observerpattern.IViewer;
 
 public interface IPhotoGallery {
     void subscribe(IViewer viewer);

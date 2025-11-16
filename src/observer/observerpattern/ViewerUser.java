@@ -1,6 +1,4 @@
-package observer.implementation;
-
-import observer.interfaces.IViewer;
+package observer.observerpattern;
 
 public class ViewerUser implements IViewer {
     private String username;
