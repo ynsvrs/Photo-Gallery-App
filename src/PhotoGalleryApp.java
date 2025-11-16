@@ -38,12 +38,12 @@ public class PhotoGalleryApp {
 
         // Strategy
         System.out.println("\n--- STRATEGY ---");
-        Photo photo1 = new Photo("Beach Summer", "2025-01-15", 4.5);
-        Photo photo2 = new Photo("Mountain", "2024-12-20", 4.8);
+        Photo photo_beach = new Photo("Beach Summer", "2025-01-15", 4.5);
+        Photo photo_mountain = new Photo("Mountain", "2024-12-20", 4.8);
         Gallery gallery = new Gallery(new SortByDate());
-        System.out.println(gallery.sortPhotos(photo1, photo2));
+        System.out.println(gallery.sortPhotos(photo_beach, photo_mountain));
         gallery.setSortingStrategy(new SortByRating());
-        System.out.println(gallery.sortPhotos(photo1, photo2));
+        System.out.println(gallery.sortPhotos(photo_beach, photo_mountain));
 
         // Observer
         System.out.println("\n--- OBSERVER ---");
