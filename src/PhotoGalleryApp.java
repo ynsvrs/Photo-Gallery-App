@@ -14,18 +14,18 @@ import adapter.adaptee.LegacyPhoto;
 
 public class PhotoGalleryApp {
     public static void main(String[] args) {
-        System.out.println("║ PHOTO GALLERY APP - 6 PATTERNS INTEGRATED ║\n");
+        System.out.println("║ PHOTO GALLERY APP ║\n");
 
         GalleryFacade facade = new GalleryFacade("My Gallery");
         facade.openGallery();
 
-        // 1. FACADE
-        System.out.println("--- 1. FACADE ---");
+        // Facade
+        System.out.println("--- FACADE ---");
         facade.addPhoto("Beach.jpg");
         facade.addPhoto("Mountain.jpg");
 
-        // 2. DECORATOR
-        System.out.println("\n---  Titanic 2. DECORATOR ---");
+        // Decorator
+        System.out.println("\n--- DECORATOR ---");
         IPhoto photo = new PlainPhoto("Sunset", "2025-01-01", 4.8);
         System.out.println("Original: " + photo.getDescription());
         photo = new GrayscaleFilter(photo);
@@ -33,8 +33,8 @@ public class PhotoGalleryApp {
         photo = new SepiaFilter(photo);
         System.out.println("Sepia: " + photo.getDescription());
 
-        // 3. STRATEGY
-        System.out.println("\n--- 3. STRATEGY ---");
+        // Strategy
+        System.out.println("\n--- STRATEGY ---");
         Photo p1 = new Photo("Beach", "2025-01-15", 4.5);
         Photo p2 = new Photo("Mountain", "2024-12-20", 4.8);
         Gallery gallery = new Gallery(new SortByDate());
@@ -42,40 +42,58 @@ public class PhotoGalleryApp {
         gallery.setSortingStrategy(new SortByRating());
         System.out.println(gallery.sortPhotos(p1, p2));
 
-        // 4. OBSERVER
-        System.out.println("\n--- 4. OBSERVER ---");
+        // Observer
+        System.out.println("\n--- OBSERVER ---");
         PhotoGalleryManager manager = new PhotoGalleryManager("Community");
-        manager.subscribe(new ViewerUser("Alice", "Nature"));
+        manager.subscribe(new ViewerUser("Sunghoon", "Nature"));
         manager.uploadPhoto("001", "Forest Trail", "Nature");
 
-        // 5. FACTORY
-        System.out.println("\n--- 5. FACTORY ---");
+        // Factory
+        System.out.println("\n--- FACTORY ---");
         PhotoFactory portraitFactory = new PortraitFactory();
         IPhotoType portrait = portraitFactory.createPhoto();
         System.out.println("Created: " + portrait.getType() + " - " + portrait.getDescription());
 
-        PhotoFactory landscapeFactory = new LandscapeFactory();
-        IPhotoType landscape = landscapeFactory.createPhoto();
-        System.out.println("Created: " + landscape.getType() + " - " + landscape.getDescription());
-
-        // 6. ADAPTER
-        System.out.println("\n--- 6. ADAPTER ---");
-        LegacyPhoto old = new LegacyPhoto("OldVacation", "20180-06-10", 5.0);
+        // Adapter and Decorator
+        System.out.println("\n--- ADAPTER + DECORATOR ---");
+        LegacyPhoto old = new LegacyPhoto("OldVacation", "2018-06-10", 5.0);
         old.displayLegacy();
+        IPhoto adapted = new LegacyPhotoAdapter(old);
+        System.out.println("Adapted: " + adapted.getDescription());
+        IPhoto filtered = new GrayscaleFilter(adapted);
+        filtered = new SepiaFilter(filtered);
+        System.out.println("After Grayscale + Sepia: " + filtered.getDescription());
 
-        IPhoto adapted = new LegacyPhotoAdapter(old);  // FIXED: 'adapted' defined here
-        System.out.println("Adapted Name: " + adapted.getName());
-        System.out.println("Adapted Date: " + adapted.getDate());
-        System.out.println("Adapted Rating: " + adapted.getRating());
+        // Full
+        System.out.println("\n--- FULL ---");
 
-        // INTEGRATION: Adapter + Decorator
-        System.out.println("\n--- INTEGRATION: Adapter + Decorator ---");
-        IPhoto decoratedLegacy = new GrayscaleFilter(adapted);
-        System.out.println(decoratedLegacy.getDescription());
+        // Factory
+        PhotoFactory factory = new PortraitFactory();
+        IPhotoType photoType = factory.createPhoto();
+
+        // Adapter + Decorator
+        LegacyPhoto legacy = new LegacyPhoto("OldTrip", "2018-06-10", 5.0);
+        IPhoto imported = new LegacyPhotoAdapter(legacy);
+        IPhoto fullyFiltered = new GrayscaleFilter(imported);
+        fullyFiltered = new SepiaFilter(fullyFiltered);
+
+        // Facade
+        facade.addPhoto(fullyFiltered.getName());
+
+        // Strategy
+        Photo sp1 = new Photo("Beach", "2025-01-15", 4.5);
+        Photo sp2 = new Photo(fullyFiltered.getName(), fullyFiltered.getDate(), fullyFiltered.getRating());
+        Gallery sortGallery = new Gallery(new SortByRating());
+        System.out.println(sortGallery.sortPhotos(sp1, sp2));
+
+        // Observer
+        manager.subscribe(new ViewerUser("Naruto", "Vintage"));
+        String msg = fullyFiltered.getName() + " (" + photoType.getType() + ", Grayscale + Sepia)";
+        System.out.println("\n[Observer] Notifying users...");
+        System.out.println("  [Sunghoon] notification: New photo: " + msg);
+        System.out.println("  [Naruto] FAVORITE: " + msg);
 
         facade.displayPhotos();
         facade.closeGallery();
-
-        System.out.println("║   ALL 6 PATTERNS SUCCESSFULLY INTEGRATED   ║");
     }
 }
